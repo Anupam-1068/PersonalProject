@@ -14,9 +14,11 @@ import java.util.List;
 @RequestMapping("book")
 public class BookController {
 
-
-
     private final BookService bookService;
+    @GetMapping()
+    public List<BookDto> getBooks() {
+        return bookService.getAllBook();
+    }
 
     @GetMapping("{id}")
     public List<BookDto> getBookById(@PathVariable Long id) {

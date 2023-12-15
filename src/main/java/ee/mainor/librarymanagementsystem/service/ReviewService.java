@@ -17,6 +17,12 @@ public class ReviewService {
 
     private final ReviewRepository reviewRepository;
 
+    public List<ReviewDto> getAllReview(){
+        List<ReviewModel> reviewModel = reviewRepository.getAllReview();
+
+        return getReviewDtos(reviewModel);
+    }
+
     public List<ReviewDto> getReviewByUserEmail(String userEmail){
         List<ReviewModel> ReviewModels = reviewRepository.findReviewModelByUserEmail(userEmail);
 

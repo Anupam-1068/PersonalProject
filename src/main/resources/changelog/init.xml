@@ -30,6 +30,24 @@
             );
         </sql>
     </changeSet>
+    <changeSet id="insert_data" author="anupam.krishna">
+        <sql splitStatements="false">
+            -- Insert data into the 'book' table
+            INSERT INTO book (title, author, description, copies, copies_available, category, img)
+            VALUES
+                ('Book Title 1', 'Author 1', 'Description 1', 10, 10, 'Category 1', 'img1.jpg'),
+                ('Book Title 2', 'Author 2', 'Description 2', 15, 15, 'Category 2', 'img2.jpg'),
+                ('Book Title 3', 'Author 3', 'Description 3', 20, 20, 'Category 3', 'img3.jpg');
+
+-- Insert data into the 'review' table
+            INSERT INTO review (user_email, date, rating, book_id, review_description)
+            VALUES
+                ('user1@example.com', '2023-01-01', 5, 1, 'Great book!'),
+                ('user2@example.com', '2023-01-02', 4, 2, 'Enjoyed reading it.'),
+                ('user3@example.com', '2023-01-03', 3, 3, 'Not bad, but could be better');
+
+        </sql>
+    </changeSet>
 
 
 

@@ -16,7 +16,11 @@ public class BookService {
 
     private final BookRepository bookRepository;
 
+    public List<BookDto> getAllBook(){
+        List<BookModel> BookModels = bookRepository.getAllBook();
 
+        return getBookDtos(BookModels);
+    }
     public List<BookDto> getBooksById(Long id){
         List<BookModel> BookModels = bookRepository.findAllById(id);
 
@@ -32,9 +36,9 @@ public class BookService {
 
 
     public List<BookDto> getBooksByAuthor(String author){
-        List<BookModel> BookModels = bookRepository.findAllByAuthor(author);
+        List<BookModel> bookModels = bookRepository.findAllByAuthor(author);
 
-        return getBookDtos(BookModels);
+        return getBookDtos(bookModels);
     }
 
     public List<BookDto> getBooksByCategory(String category){
@@ -79,13 +83,8 @@ public class BookService {
         bookRepository.deleteById(id);
     }
 
-
     private BookModel requireBook(Long id) {
         return bookRepository.findById(id)
                 .orElseThrow(() -> new IllegalArgumentException(String.format("Book with id: %s was not found", id)));
     }
-
-
-
-
 }

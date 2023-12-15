@@ -14,8 +14,13 @@ public class ReviewController {
 
     private final ReviewService reviewService;
 
+    @GetMapping()
+    public List<ReviewDto> getReview() {
+        return reviewService.getAllReview();
+    }
+
     @GetMapping("id")
-    public List<ReviewDto> getBookByUserEmail(@RequestParam String userEmail) {
+    public List<ReviewDto> getReviewByUserEmail(@RequestParam String userEmail) {
         return reviewService.getReviewByUserEmail(userEmail);
     }
 
