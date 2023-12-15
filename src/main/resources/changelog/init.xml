@@ -48,6 +48,11 @@
 
         </sql>
     </changeSet>
+    <changeSet id="alter-table" author="anupam">
+        <sql splitStatements="false">
+            ALTER TABLE book ALTER COLUMN author SET NOT NULL;
+        </sql>
+    </changeSet>
 
 
 
