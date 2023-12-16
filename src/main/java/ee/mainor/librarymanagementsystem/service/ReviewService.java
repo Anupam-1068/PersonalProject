@@ -11,7 +11,6 @@ import org.springframework.transaction.annotation.Transactional;
 import java.util.List;
 
 @Service
-@Transactional(readOnly = true)
 @RequiredArgsConstructor
 public class ReviewService {
 
@@ -66,6 +65,7 @@ public class ReviewService {
 
         return ReviewMapper.toDto(reviewRepository.save(reviewModel));
     }
+    @Transactional
     public void deleteReview(Long id) {
         reviewRepository.deleteById(id);
     }

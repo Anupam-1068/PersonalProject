@@ -1,13 +1,9 @@
 package ee.mainor.librarymanagementsystem.web;
-
-
 import ee.mainor.librarymanagementsystem.dto.BookDto;
 import ee.mainor.librarymanagementsystem.service.BookService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
-
 import java.util.List;
-
 
 @RestController
 @RequiredArgsConstructor
