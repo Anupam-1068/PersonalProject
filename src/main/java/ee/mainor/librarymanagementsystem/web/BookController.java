@@ -16,13 +16,13 @@ public class BookController {
 
     private final BookService bookService;
     @GetMapping()
-    public List<BookDto> getBooks() {
+    public List<BookDto> getAllBooks() {
         return bookService.getAllBook();
     }
 
     @GetMapping("{id}")
-    public List<BookDto> getBookById(@PathVariable Long id) {
-        return bookService.getBooksById(id);
+    public BookDto getBookById(@PathVariable Long id) {
+        return bookService.getBookModelById(id);
     }
 
     @GetMapping("title")
@@ -56,8 +56,5 @@ public class BookController {
     public void deleteBook(@PathVariable Long id) {
         bookService.deleteBook(id);
     }
-
-
-
 
 }

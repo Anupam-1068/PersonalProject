@@ -14,7 +14,7 @@ public interface BookRepository extends CrudRepository<BookModel,Long> {
             select * from book
             """)
     List<BookModel> getAllBook();
-    List<BookModel> findAllById(Long id);
+    BookModel findBookModelById(Long id);
     List<BookModel> findAllByTitle(String title);
     List<BookModel> findAllByAuthor(String author);
     List<BookModel> findAllByCategory(String category);

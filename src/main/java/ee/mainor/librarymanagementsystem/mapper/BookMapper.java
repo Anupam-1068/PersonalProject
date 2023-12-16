@@ -18,7 +18,7 @@ public class BookMapper {
 
     }
 
-    public static BookModel toEntity(BookDto bookDto, BookModel bookModel) {
+    public static BookModel toModel(BookDto bookDto, BookModel bookModel) {
         if (bookModel == null) {
             bookModel = new BookModel();
         }

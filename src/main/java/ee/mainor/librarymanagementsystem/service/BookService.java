@@ -1,7 +1,7 @@
 package ee.mainor.librarymanagementsystem.service;
 
-import ee.mainor.librarymanagementsystem.libraryRepository.BookRepository;
 import ee.mainor.librarymanagementsystem.dto.BookDto;
+import ee.mainor.librarymanagementsystem.libraryRepository.BookRepository;
 import ee.mainor.librarymanagementsystem.mapper.BookMapper;
 import ee.mainor.librarymanagementsystem.model.BookModel;
 import lombok.RequiredArgsConstructor;
@@ -10,21 +10,20 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 @Service
-@Transactional(readOnly = true)
 @RequiredArgsConstructor
 public class BookService {
 
     private final BookRepository bookRepository;
 
     public List<BookDto> getAllBook(){
-        List<BookModel> BookModels = bookRepository.getAllBook();
+        List<BookModel> bookModels = bookRepository.getAllBook();
 
-        return getBookDtos(BookModels);
+        return getBookDtos(bookModels);
     }
-    public List<BookDto> getBooksById(Long id){
-        List<BookModel> BookModels = bookRepository.findAllById(id);
+    public BookDto getBookModelById(Long id){
+        BookModel bookModel = bookRepository.findBookModelById(id);
 
-        return getBookDtos(BookModels);
+        return BookMapper.toDto(bookModel);
     }
 
     public List<BookDto> getBooksByTitle(String title){
@@ -61,7 +60,7 @@ public class BookService {
     @Transactional
     public BookDto createBook(BookDto bookdto) {
 
-        BookModel bookModel = BookMapper.toEntity(bookdto, null);
+        BookModel bookModel = BookMapper.toModel(bookdto, null);
 
         BookModel bookModel1 = bookRepository.save(bookModel);
 
@@ -74,7 +73,7 @@ public class BookService {
     @Transactional
     public BookDto updateBook(Long id, BookDto bookDto) {
         BookModel initialBook = requireBook(id);
-        BookModel bookModel = BookMapper.toEntity(bookDto, initialBook);
+        BookModel bookModel = BookMapper.toModel(bookDto, initialBook);
 
         return BookMapper.toDto(bookRepository.save(bookModel));
     }

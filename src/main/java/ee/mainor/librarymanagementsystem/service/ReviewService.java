@@ -1,7 +1,7 @@
 package ee.mainor.librarymanagementsystem.service;
 
-import ee.mainor.librarymanagementsystem.libraryRepository.ReviewRepository;
 import ee.mainor.librarymanagementsystem.dto.ReviewDto;
+import ee.mainor.librarymanagementsystem.libraryRepository.ReviewRepository;
 import ee.mainor.librarymanagementsystem.mapper.ReviewMapper;
 import ee.mainor.librarymanagementsystem.model.ReviewModel;
 import lombok.RequiredArgsConstructor;
@@ -23,6 +23,11 @@ public class ReviewService {
         return getReviewDtos(reviewModel);
     }
 
+    public ReviewDto getReviewModelById(Long id){
+        ReviewModel reviewModel = reviewRepository.findReviewModelById(id);
+
+        return ReviewMapper.toDto(reviewModel);
+    }
     public List<ReviewDto> getReviewByUserEmail(String userEmail){
         List<ReviewModel> ReviewModels = reviewRepository.findReviewModelByUserEmail(userEmail);
 

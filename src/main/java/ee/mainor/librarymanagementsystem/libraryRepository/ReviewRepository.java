@@ -15,6 +15,8 @@ public interface ReviewRepository extends CrudRepository<ReviewModel,Long> {
             """)
     List<ReviewModel> getAllReview();
 
+    ReviewModel findReviewModelById(Long id);
+
     List<ReviewModel> findReviewModelByUserEmail(String userEmail);
 
 
